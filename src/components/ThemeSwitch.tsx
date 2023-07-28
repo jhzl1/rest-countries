@@ -17,7 +17,10 @@ export const ThemeSwitch = () => {
   }
 
   return (
-    <button className="flex" onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}>
+    <button
+      className="flex text-sm items-center lg:text-base"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+    >
       {resolvedTheme === "dark" ? <SunIcon className="mr-2" /> : <MoonIcon className="mr-2" />}
       {resolvedTheme === "dark" ? "Dark" : "Light"} Mode
     </button>

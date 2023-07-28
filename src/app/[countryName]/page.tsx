@@ -52,23 +52,21 @@ const Page: NextPage<Params> = async ({ params }) => {
   const firstNativeName = Object.keys(name.nativeName)[0]
 
   return (
-    <div className="space-y-14">
+    <div className="space-y-5 lg:space-y-14">
       <BackButton />
-      <div className="grid grid-cols-2 gap-x-20">
-        <div>
-          <div className="w-full h-96 relative">
-            <Image
-              src={flags.svg}
-              alt={name.official}
-              data-testid="country-image"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
+      <div className="grid gap-5 md:grid-cols-2 lg:gap-x-20">
+        <div className="w-full h-40 lg:h-96 relative">
+          <Image
+            src={flags.svg}
+            alt={name.official}
+            data-testid="country-image"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-8">{name.official}</h2>
-          <div className="grid grid-cols-2 gap-x-10">
+          <div className="grid gap-y-3 md:grid-cols-2 gap-x-10">
             <div className="space-y-3">
               <p>
                 <strong>Native name: </strong>
