@@ -27,3 +27,34 @@ export interface Eng {
   official: string
   common: string
 }
+
+export interface CountryFull {
+  flags: Flags
+  name: Name
+  tld: string[]
+  currencies: Currencies
+  capital: string[]
+  region: string
+  subregion: string
+  languages: Languages
+  borders: string[]
+  population: number
+}
+
+export interface Currencies {
+  [currencyName: string]: Currency
+}
+
+export interface Currency {
+  name: string
+  symbol: string
+}
+
+export interface Languages {
+  [language: string]: string
+}
+
+export interface SPA {
+  official: string
+  common: string
+}

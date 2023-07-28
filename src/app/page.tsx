@@ -1,6 +1,6 @@
 import { restCountriesApi } from "@/api/restCountriesApi"
+import { CountryList } from "@/components"
 import { CountrySmall } from "@/types/countrySmall"
-import { CountryList } from "./CountryList"
 
 const getCountries = async () => {
   const { data: countries, statusText } = await restCountriesApi.get<CountrySmall[]>("/all", {
@@ -12,7 +12,7 @@ const getCountries = async () => {
   return { countries, isSuccess: statusText === "OK" }
 }
 
-export default async function Home() {
+const Home = async () => {
   const { countries, isSuccess } = await getCountries()
 
   if (!isSuccess) {
@@ -21,3 +21,5 @@ export default async function Home() {
 
   return <CountryList countries={countries} />
 }
+
+export default Home

@@ -1,3 +1,4 @@
+export * from "./BackIcon"
 export * from "./ChevronIcon"
 export * from "./MoonIcon"
 export * from "./SearchIcon"
