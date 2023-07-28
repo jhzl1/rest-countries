@@ -22,7 +22,7 @@ export const InputFilter = ({ className, value: initialValue, onChange, ...rest 
       className={clsx(
         "p-3 flex items-center space-x-7 bg-white rounded-md shadow-md transition-all duration-150 dark:bg-dark-primary",
         {
-          "text-white": value,
+          "dark:text-white": value,
         },
         className,
       )}
@@ -32,7 +32,7 @@ export const InputFilter = ({ className, value: initialValue, onChange, ...rest 
         onChange={({ target }) => setValue(target.value)}
         {...rest}
         value={value}
-        className="outline-none bg-transparent w-full"
+        className="outline-none bg-transparent w-full placeholder-neutral-500"
       />
     </div>
   )

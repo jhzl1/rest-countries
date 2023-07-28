@@ -2,12 +2,15 @@
 
 import CountryCard from "@/components/CountryCard"
 import { CountrySmall } from "@/types/countrySmall"
-import { Filters } from "./Filters"
 import { useFilters } from "@/hooks"
+import { InputFilter } from "./InputFilter"
+import { Dropdown } from "./Dropdown"
 
 interface Props {
   countries: CountrySmall[]
 }
+
+const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
 
 export const CountryList = ({ countries }: Props) => {
   const {
@@ -20,12 +23,23 @@ export const CountryList = ({ countries }: Props) => {
 
   return (
     <>
-      <Filters
-        countryNameFilter={countryNameFilter}
-        onInputFilterChange={handleCountryFilterNameChange}
-        onRegionFilterChange={handleRegionFilterChange}
-        regionNameFilter={regionFilter}
-      />
+      <div className="flex flex-col md:flex-row space-y-3 justify-between items-center">
+        <InputFilter
+          placeholder="Search for a country..."
+          value={countryNameFilter}
+          onChange={handleCountryFilterNameChange}
+          className="w-full md:w-72"
+        />
+
+        <Dropdown
+          options={regions}
+          placeholder="Filter by region"
+          className="w-full md:w-52"
+          onSelectValue={handleRegionFilterChange}
+          value={regionFilter}
+        />
+      </div>
+
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-14">
         {filteredCountries.length === 0 && (
           <span>No matches found for country name {`"${countryNameFilter}"`} </span>

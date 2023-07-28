@@ -47,14 +47,20 @@ export const Dropdown = ({
   }, [])
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className={`relative ${className}`} ref={dropdownRef}>
       <button
-        className={`bg-white dark:bg-dark-primary rounded-md shadow-md p-4 flex justify-between w-full z-30 relative ${className}`}
+        className="bg-white dark:bg-dark-primary rounded-md shadow-md p-3 flex justify-between w-full z-30 relative"
         onClick={() => setIsOpenDropdwon(!isOpenDropdwon)}
         data-testid="button-dropdown"
         tabIndex={-1}
       >
-        <span>{value || placeholder}</span>
+        <span
+          className={clsx({
+            "!text-neutral-500": !value,
+          })}
+        >
+          {value || placeholder}
+        </span>
 
         <div className="flex space-x-3 items-center">
           {value && (
