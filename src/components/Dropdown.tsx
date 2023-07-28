@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronIcon, XIcon } from "@/app/icons"
+import { ChevronIcon, XIcon } from "@/icons"
 import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
 
