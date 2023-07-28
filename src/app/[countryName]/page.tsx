@@ -1,6 +1,4 @@
-import { Dropdown } from "@/components"
 import CountryCard from "@/components/CountryCard"
-import { useState } from "react"
 
 const Page = () => {
   return (
@@ -12,8 +10,6 @@ const Page = () => {
         population={1000000}
         region="El cambur"
       />
-      <div className="h-5"></div>
-      ddid
     </div>
   )
 }

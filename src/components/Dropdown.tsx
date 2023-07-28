@@ -39,6 +39,8 @@ export const Dropdown = ({ options, value, onSelectValue, placeholder = "Filter"
       <button
         className="bg-white rounded-md shadow-md p-4 flex justify-between w-full z-30 relative"
         onClick={() => setIsOpenDropdwon(!isOpenDropdwon)}
+        data-testid="button-dropdown"
+        tabIndex={-1}
       >
         <span>{value || placeholder}</span>
 
@@ -47,6 +49,7 @@ export const Dropdown = ({ options, value, onSelectValue, placeholder = "Filter"
             <div
               className="bg-neutral-300 rounded-full p-1 h-5 w-5 flex justify-center items-center"
               onClick={handleResetValue}
+              data-testid="button-reset-value"
             >
               <XIcon />
             </div>
