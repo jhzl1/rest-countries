@@ -19,11 +19,10 @@ export interface Name {
 }
 
 export interface NativeName {
-  eng: Eng
-  smo: Eng
+  [name: string]: NativeNameDetail
 }
 
-export interface Eng {
+export interface NativeNameDetail {
   official: string
   common: string
 }
@@ -37,7 +36,7 @@ export interface CountryFull {
   region: string
   subregion: string
   languages: Languages
-  borders: string[]
+  borders?: string[]
   population: number
 }
 
