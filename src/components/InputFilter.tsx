@@ -1,17 +1,39 @@
+import { useDebounce } from "@/hooks"
 import { SearchIcon } from "@/icons"
 import clsx from "clsx"
-import { InputHTMLAttributes } from "react"
+import { useEffect, useState } from "react"
 
-export const InputFilter = ({ className, ...rest }: InputHTMLAttributes<HTMLInputElement>) => {
+type Props = {
+  value: string
+  onChange: (value: string) => void
+  debounce?: number
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">
+
+export const InputFilter = ({ className, value: initialValue, onChange, ...rest }: Props) => {
+  const [value, setValue] = useState(initialValue)
+  const debouncedValue = useDebounce(value)
+
+  useEffect(() => {
+    onChange(debouncedValue)
+  }, [debouncedValue])
+
   return (
     <div
       className={clsx(
-        "p-3 flex items-center text-neutral-500 space-x-7 bg-white rounded-md shadow-md transition-all duration-150 dark:bg-dark-primary",
+        "p-3 flex items-center space-x-7 bg-white rounded-md shadow-md transition-all duration-150 dark:bg-dark-primary",
+        {
+          "text-white": value,
+        },
         className,
       )}
     >
-      <SearchIcon className="ml-7" />
-      <input {...rest} className="outline-none bg-transparent w-full" />
+      <SearchIcon className="ml-7 text-neutral-500" />
+      <input
+        onChange={({ target }) => setValue(target.value)}
+        {...rest}
+        value={value}
+        className="outline-none bg-transparent w-full"
+      />
     </div>
   )
 }

@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             <ThemeSwitch />
           </header>
-          <main className="px-5 lg:px-20 py-10">{children}</main>
+          <main className="px-5 lg:px-20 py-10 space-y-10">{children}</main>
         </Providers>
       </body>
     </html>
