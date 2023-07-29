@@ -1,15 +1,15 @@
 import { restCountriesApi } from "@/api/restCountriesApi"
 import { CountryList } from "@/components"
-import { CountrySmall } from "@/types/countrySmall"
+import { CountryShort } from "@/types/country"
 
 const getCountries = async () => {
-  const { data: countries, statusText } = await restCountriesApi.get<CountrySmall[]>("/all", {
+  const { data: countries, status } = await restCountriesApi.get<CountryShort[]>("/all", {
     params: {
       fields: "name,flags,region,capital,population",
     },
   })
 
-  return { countries, isSuccess: statusText === "OK" }
+  return { countries, isSuccess: status === 200 }
 }
 
 const Home = async () => {

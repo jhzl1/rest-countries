@@ -1,16 +1,15 @@
 import { restCountriesApi } from "@/api/restCountriesApi"
 import { BackButton } from "@/components/BackButton"
 import { Country } from "@/types/country"
-import { NextPage } from "next"
 import Image from "next/image"
-interface Params {
+interface Props {
   params: {
     countryName: string
   }
 }
 
 const getCountryDetail = async (countryName: string) => {
-  const { data, statusText } = await restCountriesApi.get<Country[]>(`/name/${countryName}`, {
+  const { data, status } = await restCountriesApi.get<Country[]>(`/name/${countryName}`, {
     params: {
       fullText: true,
     },
@@ -18,10 +17,10 @@ const getCountryDetail = async (countryName: string) => {
 
   const [country] = data
 
-  return { country, isSuccess: statusText === "OK" }
+  return { country, isSuccess: status === 200 }
 }
 
-const Page: NextPage<Params> = async ({ params }) => {
+const CountryDetailPage = async ({ params }: Props) => {
   const { countryName } = params
 
   const { country } = await getCountryDetail(countryName)
@@ -65,7 +64,9 @@ const Page: NextPage<Params> = async ({ params }) => {
           />
         </div>
         <div>
-          <h2 className="text-2xl font-bold mb-8">{name.official}</h2>
+          <h2 className="text-2xl font-bold mb-8" data-testid="country-title">
+            {name.official}
+          </h2>
           <div className="grid gap-y-3 md:grid-cols-2 gap-x-10">
             <div className="space-y-3">
               <p>
@@ -127,4 +128,4 @@ const Page: NextPage<Params> = async ({ params }) => {
   )
 }
 
-export default Page
+export default CountryDetailPage
