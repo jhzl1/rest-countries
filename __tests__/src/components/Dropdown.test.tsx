@@ -1,6 +1,6 @@
-import { Dropdown } from "@/components"
 import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
+import { Dropdown } from "@/components/Dropdown"
 
 describe("test at Dropdown component", () => {
   const mockedHandleSelectValue = jest.fn()

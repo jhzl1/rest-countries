@@ -1,13 +1,13 @@
 "use client"
 
 import CountryCard from "@/components/CountryCard"
-import { CountrySmall } from "@/types/countrySmall"
 import { useFilters } from "@/hooks"
 import { InputFilter } from "./InputFilter"
 import { Dropdown } from "./Dropdown"
+import { CountryShort } from "@/types/country"
 
 interface Props {
-  countries: CountrySmall[]
+  countries: CountryShort[]
 }
 
 const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]

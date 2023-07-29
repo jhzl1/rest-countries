@@ -1,24 +1,18 @@
-export interface CountrySmall {
-  flags: Flags
-  name: Name
-  capital: string[]
-  region: string
-  population: number
-}
+export type CountryShort = Pick<Country, "name" | "capital" | "region" | "population" | "flags">
 
-export interface Flags {
+export type Flags = {
   png: string
   svg: string
   alt: string
 }
 
-export interface Name {
+export type Name = {
   common: string
   official: string
   nativeName: NativeName
 }
 
-export interface NativeName {
+export type NativeName = {
   [name: string]: NativeNameDetail
 }
 
@@ -27,7 +21,7 @@ export interface NativeNameDetail {
   common: string
 }
 
-export interface CountryFull {
+export type Country = {
   flags: Flags
   name: Name
   tld: string[]
@@ -40,20 +34,15 @@ export interface CountryFull {
   population: number
 }
 
-export interface Currencies {
+export type Currencies = {
   [currencyName: string]: Currency
 }
 
-export interface Currency {
+export type Currency = {
   name: string
   symbol: string
 }
 
-export interface Languages {
+export type Languages = {
   [language: string]: string
-}
-
-export interface SPA {
-  official: string
-  common: string
 }

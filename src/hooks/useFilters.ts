@@ -1,7 +1,7 @@
-import { CountrySmall } from "@/types/countrySmall"
+import { CountryShort } from "@/types/country"
 import { useEffect, useState } from "react"
 
-export const useFilters = (countries: CountrySmall[]) => {
+export const useFilters = (countries: CountryShort[]) => {
   const [countryNameFilter, setCountryNameFilter] = useState("")
   const [filteredCountries, setFilteredCountries] = useState(countries)
 

@@ -1,6 +1,6 @@
 import { restCountriesApi } from "@/api/restCountriesApi"
 import { BackButton } from "@/components/BackButton"
-import { CountryFull } from "@/types/countrySmall"
+import { Country } from "@/types/country"
 import { NextPage } from "next"
 import Image from "next/image"
 interface Params {
@@ -10,7 +10,7 @@ interface Params {
 }
 
 const getCountryDetail = async (countryName: string) => {
-  const { data, statusText } = await restCountriesApi.get<CountryFull[]>(`/name/${countryName}`, {
+  const { data, statusText } = await restCountriesApi.get<Country[]>(`/name/${countryName}`, {
     params: {
       fullText: true,
     },
@@ -39,13 +39,13 @@ const Page: NextPage<Params> = async ({ params }) => {
     borders = [],
   } = country
 
-  const currencyCodes = Object.keys(currencies)
-  const currencyValues = currencyCodes.map((key) => currencies[key].name)
-  const currencyString = currencyValues.join(", ")
+  const currencyString = Object.keys(currencies)
+    .map((key) => currencies[key].name)
+    .join(", ")
 
-  const languagesCodes = Object.keys(languages)
-  const languagesValues = languagesCodes.map((key) => languages[key])
-  const languagesString = languagesValues.join(", ")
+  const languagesString = Object.keys(languages)
+    .map((key) => languages[key])
+    .join(", ")
 
   const [topLevelDomain] = tld
 
