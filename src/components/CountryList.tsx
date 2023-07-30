@@ -1,6 +1,6 @@
 "use client"
 
-import CountryCard from "@/components/CountryCard"
+import { CountryCard } from "@/components/CountryCard"
 import { useFilters } from "@/hooks"
 import { InputFilter } from "./InputFilter"
 import { Dropdown } from "./Dropdown"

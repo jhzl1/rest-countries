@@ -1,3 +1,4 @@
+import { formatPopulation } from "@/helpers"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -9,7 +10,7 @@ interface Props {
   imageUrl: string
 }
 
-const CountryCard = ({ imageUrl, name, population, region, capital }: Props) => {
+export const CountryCard = ({ imageUrl, name, population, region, capital }: Props) => {
   return (
     <Link href={`/${name}`}>
       <div className="rounded-md overflow-hidden flex flex-col bg-white shadow-md transition-all duration-200 hover:scale-105 dark:bg-dark-primary">
@@ -27,7 +28,7 @@ const CountryCard = ({ imageUrl, name, population, region, capital }: Props) => 
           <h3 className="font-bold mb-3 text-lg">{name}</h3>
 
           <p>
-            <strong>Population:</strong> {population.toLocaleString("en-US", { style: "decimal" })}
+            <strong>Population:</strong> {formatPopulation(population)}
           </p>
           <p>
             <strong>Region:</strong> {region}
@@ -40,5 +41,3 @@ const CountryCard = ({ imageUrl, name, population, region, capital }: Props) => 
     </Link>
   )
 }
-
-export default CountryCard

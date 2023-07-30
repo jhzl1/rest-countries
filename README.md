@@ -29,7 +29,7 @@ npm run test
 
 ## Arquitectura propuesta
 
-Esta aplicación sigue la nueva arquitectura propuesta en Next 13, usando la carpeta `app` como enrutamiento de la misma. Con este nuevo enrutador, se abre la posibilidad de hacer el renderizado del lado del servidor usando componentes asíncronos. Por defecto, todas las páginas son server side rendering.
+Esta aplicación sigue el nuevo paradigma propuesto en Next 13, usando la carpeta `app` como enrutamiento de la misma. Con este nuevo enrutador, se abre la posibilidad de hacer el renderizado del lado del servidor usando componentes asíncronos. Por defecto, todas las páginas son server side rendering.
 
 Los componentes que se renderizan en el cliente llevan la directiva `'use client'`, tal como se especifíca en la documentación de Next.
 

@@ -1,5 +1,6 @@
 import { restCountriesApi } from "@/api/restCountriesApi"
 import { BackButton } from "@/components/BackButton"
+import { formatPopulation } from "@/helpers"
 import { Country } from "@/types/country"
 import Image from "next/image"
 interface Props {
@@ -75,7 +76,7 @@ const CountryDetailPage = async ({ params }: Props) => {
               </p>
               <p>
                 <strong>Population: </strong>
-                {population.toLocaleString("en-US", { style: "decimal" })}
+                {formatPopulation(population)}
               </p>
               <p>
                 <strong>Region: </strong>
