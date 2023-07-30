@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rest Countries App / Next 13 + Typescript
 
-## Getting Started
+Esta aplicación fue creada con Next 13 usando la última novedad de la carpeta `app` para hacer el enrutado de la misma
 
-First, run the development server:
+## Librerías usadas
 
-```bash
+- Axios
+- Tailwind CSS
+- Clsx
+- React Testing Library
+- Jest
+
+## Instalación
+
+Esta aplicación requiere [Node.js](https://nodejs.org/) v12+ para correr.
+
+Instalar las dependencias y correr el servidor de desarrollo:
+
+```sh
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Correr las pruebas:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Arquitectura propuesta
 
-## Learn More
+Esta aplicación sigue la nueva arquitectura propuesta en Next 13, usando la carpeta `app` como enrutamiento de la misma. Con este nuevo enrutador, se abre la posibilidad de hacer el renderizado del lado del servidor usando componentes asíncronos. Por defecto, todas las páginas son server side rendering.
 
-To learn more about Next.js, take a look at the following resources:
+Los componentes que se renderizan en el cliente llevan la directiva `'use client'`, tal como se especifíca en la documentación de Next.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Se usaron las últimas novedades del lenguaje, tales como desestructuración, operadores rest, funciones flecha, etc, y demás buenas prácticas. Los componentes son pequeños para ser de fácil lectura, respetan el principio de responsabilidad única y permiten observar cómo fluye la data entre ellos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Los llamados al API para obtener tanto los países como el detalle de cada país son obtenidos del servidor, para optimizar el tiempo de carga de la app.
 
-## Deploy on Vercel
+En este caso en particular, los filtros se aplicaron del lado del cliente debido a el API dispone de dos endpoints diferentes para hacer el filtrado por nombre y por region. Al traer todos los países, llamar de nuevo a endpoints diferentes para filtrar la data que ya está en nuestro poder resulta ser ineficiente, demoraría más el proceso de filtrado y complicaría el código.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para el tema de los estilos, se usó Tailwind por su versatilidad y por la facilidad de aplicar de forma muy sencilla tanto el responsive desing como el Dark Mode.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+La inclusión de Typescript resulta fundamental, ya que nos permite tener control de tipos en todo momento de nuestro desarrollo, además de permitir acceder fácilmente a los tipos de las respuestas del API.
+
+La estructura de carpetas permite una fácil búsqueda de cualquier archivo en el directorio.
+
+Los iconos usados son SVG's, y solo se colocaron los necesarios para la app. No se usó una librería ya que generalmente estas incrementan el tamaño de la app aunque solo se usen unos pocos componentes. De esta manera nos aseguramos que la aplicación contenga solo lo que necesitamos.
+
+Las pruebas fueron hechas de manera lógica y que testearan el comportamiento general de la aplicación, garantizando su correcto funcionamiento.
